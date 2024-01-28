@@ -33,7 +33,12 @@ function App() {
   function today() {
     const currentDate = new Date();
     currentDate.setDate(currentDate.getDate() + days);
-    const options = { year: "numeric", month: "numeric", day: "numeric" };
+    const options = {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    };
     return currentDate.toLocaleDateString(undefined, options);
   }
 
