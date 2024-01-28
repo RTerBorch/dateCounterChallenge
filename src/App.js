@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 
@@ -13,22 +12,11 @@ function App() {
 
   return (
     <div className="App">
+      <p>---------- What day? ----------</p>
       <Counter />
+      <p>-------------------------------</p>
     </div>
   );
-
-  function addStep() {
-    setStep(step + 1);
-  }
-  function removeStep() {
-    setStep(step - 1);
-  }
-  function addMultiplier() {
-    setMultiplier(multiplier + 1);
-  }
-  function removeMultiplier() {
-    setMultiplier(multiplier - 1);
-  }
 
   function today() {
     const currentDate = new Date();
@@ -44,17 +32,20 @@ function App() {
 
   function Counter() {
     return (
-      <div>
+      <>
         <div>
-          <button onClick={removeStep}>-</button>
-          {`Step: ${step}`}
-          <button onClick={addStep}>+</button>
-          <button onClick={removeMultiplier}>-</button>
-          {`multiplier: ${multiplier}`}
-          <button onClick={addMultiplier}>+</button>
+          <button onClick={() => setStep((s) => s - 1)}>-</button>
+          <span> {`Step: ${step}`}</span>
+          <button onClick={() => setStep((s) => s + 1)}>+</button>
+
+          <button onClick={() => setMultiplier((m) => m - 1)}>-</button>
+          <span>{`multiplier: ${multiplier}`}</span>
+          <button onClick={() => setMultiplier((m) => m + 1)}>+</button>
         </div>
-        <p>{`${days} days from today: ${today()}`}</p>
-      </div>
+        <p>
+          {days === 0 ? "Today is: " : `${days} days from today: `} {today()}
+        </p>
+      </>
     );
   }
 }
